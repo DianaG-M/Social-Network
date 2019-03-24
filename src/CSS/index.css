@@ -1,0 +1,55 @@
+* {
+    margin: 0%;
+    border: 0%;
+  }
+
+#logo{
+    width: 50px;
+    max-width: 100%;
+  }
+
+.color-nav{
+    background-color: #e3f2fd;
+    font-size: 30px;
+  }
+
+#logout{
+    color: white;
+    font-size: 20px;
+}
+  
+li{
+    color: white;
+}
+
+.container {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 0.5fr 3fr 3fr 0.5fr;
+    grid-template-rows: 15% 25% 20% 40%;
+    align-items: center;
+    justify-items: center;
+    background-color: #ffd6cc;
+  }
+
+  #icon {
+    margin: auto;
+    grid-column: 2/4;
+    grid-row: 2/3;
+    width: 100%;
+    max-width: 80vw;
+}
+
+#name-logo {
+  margin: auto;
+    grid-column: 2/4;
+    grid-row: 3/4;
+    width: 100%;
+    max-width: 70vw;
+}
+
+  #firebaseui-auth-container{
+      grid-column: 2/4; 
+      grid-row: 4/5;
+  }
