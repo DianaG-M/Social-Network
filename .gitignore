@@ -1,5 +1,5 @@
-.vscode
 node_modules/
+.vscode
 .DS_Store
 *.swp
 .nyc_output/

@@ -53,7 +53,7 @@ window.manejador = {
                 //Función para crear publicaciones
                 createPost.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    if (titleInput.value && contentInput.value != null) {
+                    if (contentInput.value && titleInput.value !=null) {
                         db.collection('posts').add({
                                 uid: user.uid,
                                 foto: user.photoURL,
@@ -84,10 +84,10 @@ window.manejador = {
                 let docData = doc.data();
                 let toPrint = `
                 <article id="posting" class="post">
-                <p>${docData.user}</p>
                 <img class= "profile-foto" src="${docData.foto}">
-                <p>Categoría: ${docData.title}</p>
-                <p>${docData.content}</p>
+                <p id="post-user">${docData.user}</p>
+                <p id="post-title">Categoría: ${docData.title}</p>
+                <p id="post-content">${docData.content}</p>
                 </article>
                 `;
                 wall.insertAdjacentHTML('beforeend', toPrint);
@@ -148,48 +148,15 @@ window.manejador = {
                             if (uid === docData.uid) {
                                 let perfil =
                                     `
-                                    <article id="posting" class="post">
-                                    <p>${docData.user}</p>
-                                    <img class= "profile-foto" src="${docData.foto}">
-                                    <p>Categoría: ${docData.title}</p>
-                                    <p id= "post-output">${docData.content}</p>
-                                    <button onclick= "updatePost('${doc.id}', '${doc.data().content}', '${doc.data().title}')">Editar</button>
-                                    <button onclick= "deletePost('${doc.id}')" class= "delete-btn">Borrar</button>
-
-                                    <!-- Button trigger modal 
-                                    <button type="button" onclick="updateprueba('${doc.id}', '${doc.data().content}', '${doc.data().title}')" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"  >
-                                        Editar
-                                    </button> -->
-                        
-                                    <!-- Modal 
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="text" id="content-modal">
-                                                <select name="title" id="title-modal">
-                                                    <option value="" disabled selected>Elige una opción</option>
-                                                    <option value="Receta">Receta</option>
-                                                    <option value="Reseña">Reseña</option>
-                                                    <option value="Recomendación">Recomendación</option>
-                                                    <option value="Foto">Foto</option>
-                                                </select>
-                                            </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button onclick="actualizar()" type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div> -->
-                                    </article>
-                                    `;
+                <article id="posting" class="post-in-profile">
+                <img class= "profile-foto" src="${docData.foto}">
+                <p id="user-in-profile">${docData.user}</p>
+                <p id="title-in-profile">${docData.title}</p>
+                <p id= "post-output">${docData.content}</p>
+                <button onclick= "updatePost('${doc.id}', '${doc.data().content}', '${doc.data().title}')" class="btn btn-dark update-btn">Editar</button>
+                <button onclick= "deletePost('${doc.id}')" class= "btn btn-dark delete-btn">Borrar</button>
+                </article>
+                `;
                                 wallProfile.insertAdjacentHTML('beforeend', perfil);
                             }
                         })
@@ -226,7 +193,7 @@ window.manejador = {
                     e.preventDefault();
                     switch (modo) {
                         case CREATE:
-                            if (titleInput.value && contentInput.value != null) {
+                            if (contentInput.value && titleInput.value !=null) {
                                 db.collection('posts').add({
                                     uid: user.uid,
                                     foto: user.photoURL,
